@@ -9,7 +9,7 @@ import CardDropdown from '../../components/cart-dropdown/cart-dropdown.component
 import { CartContext } from "../../contexts/cart.context"
 const Navigation = () => {
     const { currentUser } = useContext(UserContext)
-    const {isCartOpen} = useContext(CartContext)
+    const { isCartOpen, cartItems } = useContext(CartContext)
     return (
         <Fragment>
             <div className="navigation">
@@ -29,9 +29,9 @@ const Navigation = () => {
                             </Link>
                         )
                     }
-                    <CartIcon/>
+                    <CartIcon />
                 </div>
-                {isCartOpen &&  <CardDropdown/>}
+                {isCartOpen && <CardDropdown />}
             </div>
 
             <Outlet />
