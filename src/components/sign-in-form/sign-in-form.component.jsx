@@ -20,21 +20,20 @@ const SignInForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target
         setFormFields({ ...formFields, [name]: value })
-   
+
     }
 
 
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user)
-     
+        await signInWithGooglePopup();
+       
+
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
             const response = await signInWithYourEmailAndPassword(email, password)
-            console.log(response)
         } catch (error) {
             switch (error.code) {
                 case 'auth/wrong-password':
@@ -43,11 +42,11 @@ const SignInForm = () => {
                 case 'auth/user-not-found':
                     alert("User not found")
                     break
-                default: 
-                  console.log('user log in  error', error)
+                default:
+                    console.log('user log in  error', error)
             }
 
-          
+
         }
     }
     return (
